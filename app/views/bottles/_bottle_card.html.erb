@@ -1,0 +1,12 @@
+<div class="card">
+        <div class="card-content">
+            <h5><%= "Bottles for #{@bottle.patient.proper_name}" %></h5><br />
+            <b>Collected Date:&nbsp;&nbsp;</b><%= @bottle.collected_date.strftime("%Y/%m/%d %I:%M %p")%><br>
+            <b>Expiration Date:&nbsp;&nbsp;</b><%= @bottle.expiration_date.strftime("%Y/%m/%d %I:%M %p")%><br>
+            <b>Storage Method:&nbsp;&nbsp;</b><%= @bottle.storage_location%><br>
+            <b>Active?&nbsp;&nbsp;</b>
+            <%= @bottle.active ? "Yes" : "No" %> <br />
+            <b>QR:</b><br>
+            <%= image_tag (@bottle.get_qr_image), :size => "300x200", class: "img-responsive"%>
+        </div>
+</div>

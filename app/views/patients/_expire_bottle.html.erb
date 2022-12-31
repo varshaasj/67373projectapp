@@ -1,0 +1,23 @@
+<div class="col s4">
+    <div class="card">
+    <div class="card-content">
+        <span class="card-title">Expired Bottles</span>
+        <table class="striped highlight">
+            <thead>
+            <th>Bottle ID</th>
+            <th>Expiration Date</th>
+            <th>Location</th>
+            </thead>
+            <% for bottle in @expired_bottles %>
+            <tr>
+                <td><%= link_to bottle.id, bottle_path(bottle) %></td>
+                <td><%=bottle.expiration_date.strftime("%Y/%m/%d %I:%M %p")%></td>
+                <td><%=bottle.storage_location%></td>
+            </tr>
+            <% end %>
+        </table>
+        <%= will_paginate @expired_bottles, param_name: 'expired_page', previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    </div>
+    </div>
+</div>
+

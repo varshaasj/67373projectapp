@@ -1,0 +1,17 @@
+<% if logged_in? %>
+   
+<nav id="nav">
+    <ul class="left hide-on-med-and-down">
+        <li><%= link_to 'Home',  home_path %></li>
+        <li><%= link_to 'Verify',  new_verification_path %></li>
+        <li><%= link_to 'Patients', patients_path %></li>
+        <li><%= link_to 'Bottles', bottles_path %></li>
+        <li><%= link_to 'Edit Bottle', scan_bottle_edit_path %></li>
+        <%if can? :create, User%>
+        <li justify="right"><%= link_to 'Users', users_path %></li>
+        <%end%>
+    </ul>
+</nav>
+<% end %>
+
+

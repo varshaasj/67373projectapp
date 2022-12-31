@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  img {  
+    max-width: 100%;  
+    height: auto; 
+  }
+  
+  .verify {
+    height: 400px;
+    width: 400px;
+  }
+  
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 50%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding in columns */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Style the counter cards */
+  .verify-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+  
+  /* Responsive columns - one column layout (vertical) on small screens */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+
+  .article {
+    column-count: 2;
+    column-gap: 20px;
+  }
+
+  .on-the-left{
+    
+    text-align:left;
+   }
+   .on-the-center{
+      text-align: center;
+   }
+   .img-center{
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   }
+   
+   .on-the-right{
+      right: 0px;
+   }
+
+   h5.thick {
+    font-weight: bold;
+  }
+
+  h6.thick {
+    font-weight: bold;
+  }
+
+  h6.incorrect{
+    color: red;
+  }
+
+  h1.welcome{
+    color: #39c1eb;
+    text-align: center
+  }
+  p.welcome{
+    text-align: center;
+  }

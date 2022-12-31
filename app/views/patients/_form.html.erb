@@ -1,0 +1,32 @@
+<div class="card">    
+  <div class="card-content">
+   
+      <div class="row">
+        <%= simple_form_for(@patient) do |f| %>
+        <%= f.error_notification %>
+        <div class="row">
+            <div class="form-inputs">
+            <%= f.input :first_name, required: true, label_html: { class: 'active', name: 'First Name' } %>
+            <%= f.input :last_name, required: true, label_html: { class: 'active', name: 'Last Name' } %>
+            <%= f.input :patient_mrn, required: true, label: 'Patient MRN', label_html: { class: 'active'} %>
+            <%= f.input :dob, label: 'Date of Birth', label_html: { class: 'active'}, input_html: {class: 'datepicker'} %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="waves-effect waves-light btn" >
+            <%= f.button :submit %>
+            </div>
+        </div>
+    
+        
+        <% end %>
+    </div>
+  </div>
+</div>
+  
+  <div class="row">
+    <div class="form-actions col s7">
+    </div>
+  </div>
+
+

@@ -1,0 +1,64 @@
+<%= stylesheet_link_tag "verification" %>
+<% if isNew %>
+  <div class="card">    
+    <div class="card-content">
+      <div class="row">
+          <%= simple_form_for(@bottle) do |f| %>
+          <%= f.error_notification %>
+          <div class="row">
+              <div class="form-inputs">
+                <%= f.input :patient_id, collection: Patient.all,required: true, label_html: { class: 'active', name: 'Patient'  }, input_html: {id: 'patient', value: @bottle.patient } %>
+                <%= f.input :collected_date, label: 'Collection Date', label_html: { class: 'active'}, input_html: {id: 'datetime', value: DateTime.current.strftime("%Y/%m/%d %I:%M %p")} %>
+                <%# <%= f.input :storage_location, required: true, label_html: { class: 'active', name: 'Storage Location' } %> 
+                <%= f.input :storage_location, as: :radio_buttons, collection: [['Fridge','Fridge'],['Freezer', 'Freezer']], label_method: :second, value_method: :first, required: true, 
+                label_html: { name: 'Storage Location' }%>
+                
+                <%#= f.input :checkin_nurse_id_id, required: true, label_html: { class: 'active', name: 'checkin_nurse_id ID' } %>
+                <%#= f.input :checkout_nurse_id_id, required: true, label_html: { class: 'active', name: 'checkout_nurse_id ID' } %>
+                <%= simple_fields_for :other do |o| %>
+                  <%= o.input :amount, as: :numeric, label: 'Bottle Amounts', input_html: {min: '1', value: 1}%>
+                <% end %>
+              </div>
+          </div>
+          <div class="row">
+              <div class="waves-effect waves-light btn" >
+              <%= f.button :submit %>
+              </div>
+          </div>
+    
+          <% end %>
+
+      </div>
+  </div>
+</div>
+<% else %>
+    <div class="row">
+        <div class="column">
+          <%= render "bottle_card", bottle: @bottle %>
+        </div>
+  
+        <div class="column">     
+          <div class="card">    
+            <div class="card-content">
+                  <%= simple_form_for :other, url: url_for(action: 'update', controller: 'bottles', id: @bottle.id), method: 'patch' do |f| %>
+                    <%= f.error_notification %>
+                    <div class="row">
+                        <div class="form-inputs">
+                          <%= f.input :confirm, as: :radio_buttons, collection: [[true,'Yes'],[false, 'No']], label_method: :second, value_method: :first, required: true %>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="waves-effect waves-light btn" >
+                        <%= f.button :submit, "Confirm" %>
+                        </div>
+                    </div>
+                  <%end%> 
+              </div>
+            </div>
+        </div>
+       </div>
+    <%end%>
+
+
+            

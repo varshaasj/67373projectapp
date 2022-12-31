@@ -1,0 +1,44 @@
+<%= stylesheet_link_tag "verification" %>
+
+<div class="container">
+      <div class="row">
+        <div class="col s12">
+            <h1 class = "welcome">Welcome!</h1>
+            <p class = 'welcome'>This is an online application that allows nurses to verify 
+              bottles during the breast milk feeding process by scanning QR codes. As a user of this application,
+              you can access information about patients and bottles, and discharge bottles from an digitzed
+              database when bottles are to be used in the feeding process. </p>
+        </div>
+      </div>
+</div>
+
+<br/>
+
+<div class="container">
+      <div class="row">
+        <div class="col s12">
+          <div class = "card">
+            <h2 class = "on-the-center"><%= link_to "Verify", new_verification_path, class: "a-primary" %></h2>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+    <h4 class = "on-the-center"><%= link_to "Manage Patients", patients_path, class: "a-primary" %></h4>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+    <h4 class = "on-the-center"><%= link_to "Manage Bottles", bottles_path, class: "a-primary" %></h4>
+    </div>
+  </div>
+
+</div>
+
+  

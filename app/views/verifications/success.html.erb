@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag "application" %>
+<%= stylesheet_link_tag "verification" %>
+
+<div class="row">
+  <div class="column">
+    <div class="verify-card">
+        <div class="on-the-left" >
+        <h5 class="thick"><%= "Patient Name: #{@patient.proper_name}" %></h5>
+        <h6><%= "Patient MRN: #{@patient.get_mrn}" %></h6>
+        <br>
+        <h6><%= "Bottle Storage Location: #{@bottle.storage_location.titleize}" %></h6>
+        <h6><%= "Bottle Expiration Date: #{@bottle.expiration_date.to_date}" %></h6>
+        </div>
+    </div>
+    <div class="on-the-center" >
+    <%= link_to(eval("bottle_path(@bottle)"),method: 'delete', class: 'waves-effect waves-light btn') do %>
+          &nbsp;<%= "Discharge Bottle" %>
+    <% end %>
+    </div>
+  </div>
+  <div class="column">
+    <div class="verify-card">
+        <%= image_tag 'verification/success.jpeg' %>
+                <h5><%= "Match Verified!" %></h5><br />
+    </div>
+  </div>
+</div>

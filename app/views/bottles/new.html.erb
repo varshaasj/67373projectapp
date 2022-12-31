@@ -1,0 +1,17 @@
+<div>
+<h5>Add a New Bottle</h5>
+</div>
+
+
+<div class="container">
+      <div class="row">
+        <div class="col s12">
+          <p>&nbsp;</p>
+          <%= render 'form', bottle: @bottle, isNew: true%>
+
+          <%= yield %>
+
+        </div>
+      </div>
+    
+</div>

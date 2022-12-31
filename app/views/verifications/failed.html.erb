@@ -1,0 +1,41 @@
+<%= stylesheet_link_tag "verification" %>
+
+<div class="row">
+  <div class="column">
+    <div class="verify-card">
+       <div class="on-the-left" >
+        <h5 class = "thick"><%= "This bottle belongs to #{@bottle.patient.proper_name}." %></h5>
+        <h6 class = "incorrect"><%= "The selected patient was #{@patient.proper_name}." %></h6>
+        <br>
+        <h6><%= "Bottle Storage Location: #{@bottle.storage_location.titleize}" %></h6>
+        <% if @bottle.expiration_date >DateTime.now %>
+          <h6><%= "Bottle Expiration Date: #{@bottle.expiration_date.strftime("%B %d, %Y")} #{@bottle.expiration_date.strftime("%I:%M %p")}" %></h6>
+        <%else%>
+          <br/>
+          <h6 class = "thick"><%= "This bottle is also expired! "%></h6>
+          <h6 class = "incorrect"><%="Bottle Expired On: #{@bottle.expiration_date.strftime("%B %d, %Y")} at #{@bottle.expiration_date.strftime("%I:%M %p")}" %></h6>
+          <%= link_to(eval("bottle_path(@bottle)"),method: 'delete', class: 'waves-effect waves-light btn') do %>
+                &nbsp;<%= "Delete Bottle" %>
+          <% end %>
+        <% end %>
+        </div>
+    </div>
+    <div class="on-the-center" >
+    <%= link_to(eval("new_verification_path"), class: 'waves-effect waves-light btn') do %>
+          &nbsp;<%= "Verify Different Bottle" %>
+    <% end %>
+    </div>
+  </div>
+  <div class="column">
+    <div class="verify-card">
+    <div class = "img-center">
+      <div class = "verify">
+        <%= image_tag 'verification/failure.png' %>
+      </div>
+      </div>
+      <div class="on-the-center">
+        <h5><%= "Error! Bottle does not belong to patient!" %></h5><br />
+    </div>
+    </div>
+  </div>
+</div>

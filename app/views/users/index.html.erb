@@ -1,0 +1,48 @@
+<% if logged_in? %>
+  <h4>Current users in the system</h4>
+<div class="row">
+  <div class="col s9 center">
+  <div class="card">
+        <div class="card-content">
+
+  <table class="striped highlight centered">
+    <thead>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Role</th>
+      <% if can? :edit, User %>
+      <th class="align_center">Options</th>
+      <% end %>
+    </thead>
+    <% for user in @users %>
+      <tr>
+        <td><%= "#{user.name}"%></td>
+        <td><%= "#{user.username}"%></td>
+        <td><%= "#{user.role}"%></td>
+
+        <% if can? :edit, User %>
+          <td class="align_center">
+            <%= link_to edit_user_path(user) do %>
+                <i class="material-icons">edit</i>
+            <% end %>    
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <br />
+  <%= will_paginate @users, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+
+<p>&nbsp;</p>
+
+<% if can? :create, User %>
+<p><strong>
+<%= link_to "Add a New user", new_user_path, class: 'waves-effect waves-light btn' %> 
+</strong></p>
+<% end %>
+    </div>
+</div>
+ </div>
+</div>
+<% end %>
+

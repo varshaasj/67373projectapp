@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag "verification" %>
+
+<div class="row">
+  <div class="column">
+    <div class="verify-card">
+       <div class="on-the-left" >
+        <h5 class = "thick"><%= "This bottle is expired!" %></h5>
+        <h6><%= "Please dispose of this bottle immediately." %></h5>
+        <br>
+        <h6><%= "Bottle Expired On: "%></h6><h6 class = "incorrect"><%="#{@bottle.expiration_date.strftime("%B %d, %Y")} at #{@bottle.expiration_date.strftime("%I:%M %p")}" %></h6>
+        </div>
+    </div>
+    <div class="on-the-center" >
+    <%= link_to(eval("bottle_path(@bottle)"),method: 'delete', class: 'waves-effect waves-light btn') do %>
+          &nbsp;<%= "Delete Bottle" %>
+    <% end %>
+    </div>
+  </div>
+  <div class="column">
+    <div class="verify-card">
+    <div class = "img-center">
+      <div class = "verify">
+        <%= image_tag 'verification/failure.png' %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
